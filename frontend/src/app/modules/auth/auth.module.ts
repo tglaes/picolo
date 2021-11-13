@@ -7,15 +7,22 @@ import { RegisterComponent } from './register/register.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 
+
 @NgModule({
   declarations: [
     LoginComponent,
     RegisterComponent,
     ResetPasswordComponent
+
   ],
   imports: [
     CommonModule,
     AuthRoutingModule
+  ],
+  exports: [
+    LoginComponent,
+    RegisterComponent,
+    ResetPasswordComponent
   ]
 })
 export class AuthModule { }
