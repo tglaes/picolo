@@ -7,17 +7,26 @@ import { User } from './user.entity';
 export class UserService {
     constructor(@InjectRepository(User) private usersRepository: Repository<User>) { }
 
-   async createUser(user: User): Promise<User> {
+    async createUser(user: User): Promise<User> {
         return this.usersRepository.save(user);
     }
 
-    async findUserByName(name: string):Promise<User |  undefined> {
+    async findUserByName(username: string): Promise<User | undefined> {
         return await this.usersRepository
-        .createQueryBuilder("user")
-        .select("user.id")
-        .addSelect("user.name")
-        .where("user.name = :name", {name})
-        .getOne();
+            .createQueryBuilder("user")
+            .select("user.id")
+            .addSelect("user.username")
+            .where("user.username = :username", { username })
+            .getOne();
     }
 
+    async findUserByNameAndPassword(username: string, password: string): Promise<User | undefined> {
+        return await this.usersRepository
+            .createQueryBuilder("user")
+            .select("user.id")
+            .addSelect("user.username")
+            .where("user.username = :username", { username })
+            .andWhere("user.password = :password", { password })
+            .getOne();
+    }
 }
