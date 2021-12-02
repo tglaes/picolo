@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { HomeComponent } from './components/home/home.component';
+import { HomeComponent } from './home/home.component';
 
 
 
@@ -12,4 +12,4 @@ import { HomeComponent } from './components/home/home.component';
     RouterModule
   ]
 })
-export class SharedModule { }
+export class CoreModule { }
