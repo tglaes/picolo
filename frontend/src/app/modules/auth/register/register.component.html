@@ -19,6 +19,7 @@
                     <div *ngIf="f.password.errors.minlength">Passwort muss aus mindestens 8 Zeichen bestehen</div>
                 </div>
             </div>
+            <br>
             <div class="form-group">
                 <button [disabled]="loading" class="btn btn-primary">
                     <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
@@ -30,5 +31,5 @@
     </div>
   </div>
   
-  <app-list></app-list>
+
 </div>

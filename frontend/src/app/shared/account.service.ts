@@ -51,7 +51,8 @@ export class AccountService {
    * @returns 
    */
   register(user: User) {
-      return this.http.post(`${environment.apiUrl}/users/register`, user);
+    console.log("__debug:" +user.username)
+      return this.http.post(`${environment.apiUrl}/register`, user);
   }
 
   /**
@@ -59,7 +60,7 @@ export class AccountService {
    * @returns Alle aktiven Nutzer (vom Server)
    */
   getAll() {
-      return this.http.get<User[]>(`${environment.apiUrl}/users`);
+      //return this.http.get<User[]>(`${environment.apiUrl}/register`);
   }
 
   /**
@@ -68,7 +69,7 @@ export class AccountService {
    * @returns gib User mit spezifischer ID zurück
    */
   getById(id: string) {
-      return this.http.get<User>(`${environment.apiUrl}/users/${id}`);
+      //return this.http.get<User>(`${environment.apiUrl}/users/${id}`);
   }
 
 

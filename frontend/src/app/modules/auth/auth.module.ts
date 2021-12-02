@@ -6,7 +6,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {ListComponent} from './list/list.component'
+
 
 
 @NgModule({
@@ -14,8 +14,6 @@ import {ListComponent} from './list/list.component'
     LoginComponent,
     RegisterComponent,
     ResetPasswordComponent,
-    ListComponent
-    
 
   ],
   imports: [

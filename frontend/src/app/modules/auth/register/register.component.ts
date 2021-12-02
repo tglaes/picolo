@@ -17,9 +17,7 @@ export class RegisterComponent implements OnInit {
 
   constructor(
       private formBuilder: FormBuilder,
-      private route: ActivatedRoute,
-      private router: Router,
-      private accountService: AccountService,
+      private accountService: AccountService
 
   ) { }
 
@@ -27,10 +25,8 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
     console.log("__debug: Component 'register' has loaded")
     this.form = this.formBuilder.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
       username: ['', Validators.required],
-      password: ['', [Validators.required, Validators.minLength(6)]]
+      password: ['', [Validators.required, Validators.minLength(8)]]
   });
   }
 
@@ -38,21 +34,23 @@ export class RegisterComponent implements OnInit {
   get f() { return this.form.controls; }
 
   onSubmit() {
+      console.log("__debug: onSubmit register component")
       this.submitted = true;
-      if (this.form.invalid) {
-          return;
-      }
 
+      if (this.form.invalid) {
+        return;
+    }
+     
+      console.log("Value:" +this.form.value)
       this.loading = true;
       this.accountService.register(this.form.value)
           .pipe(first())
           .subscribe({
               next: () => {
-                  //ToDo Alert für success hinzufügen
-                  this.router.navigate(['../login'], { relativeTo: this.route });
+                 alert('Erfolgreich')
               },
               error: error => {
-                  //ToDo Alert für error hinzufügen
+                alert("Error" + error)
                   this.loading = false;
               }
           });
