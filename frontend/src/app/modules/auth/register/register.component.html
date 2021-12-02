@@ -1,20 +1,34 @@
-<div class="auth-card">
-    <a  class="nav-link"  [routerLink]="['']" >Zur&uuml;ck</a>
-    <form>
-        <div class="form-group">
-          <label for="inputUsername">Benutzernamen</label>
-          <input type="text" class="form-control" id="inputUsername"  placeholder="Benutzernamen eingeben">
-        </div>
-        <div class="form-group">
-          <label for="inputPassword">Passwort</label>
-          <input type="password" class="form-control" id="inputPassword" placeholder="Passwort eingeben">
-        </div>
-        <div class="form-group">
-          <label for="inputPasswordonRepeat">Passwort wiederholen</label>
-          <input type="password" class="form-control" id="inputPasswordonRepeat" placeholder="Passwort wiederholen">
-        </div>
-    <br>
-        <button type="submit" class="btn btn-primary submit">Registrieren</button>
-      </form>
-
+<div class="container">
+  <div class="card">
+ 
+    <h4 class="card-header">Registrieren</h4>
+    <div class="card-body">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="username">Benutzername</label>
+                <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+                <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                    <div *ngIf="f.username.errors.required">Benutzername angeben</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password">Passwort</label>
+                <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                    <div *ngIf="f.password.errors.required">Password ist notwendig</div>
+                    <div *ngIf="f.password.errors.minlength">Passwort muss aus mindestens 8 Zeichen bestehen</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <button [disabled]="loading" class="btn btn-primary">
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                    Registrieren
+                </button>
+                <a routerLink="" class="btn btn-link">Abbrechen</a>
+            </div>
+        </form>
+    </div>
+  </div>
+  
+  <app-list></app-list>
 </div>
