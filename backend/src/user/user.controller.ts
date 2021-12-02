@@ -1,4 +1,4 @@
-import { BadRequestException, Body, Controller, Request, Post, UseGuards } from '@nestjs/common';
+import { BadRequestException, Body, Controller, Post, UseGuards } from '@nestjs/common';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { RegisterUserDto } from './register-user.dto';
 import { User } from './user.entity';
