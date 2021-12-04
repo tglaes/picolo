@@ -11,7 +11,6 @@ export class UserController {
         private readonly userService: UserService
     ) { }
 
-    @UseGuards(JwtAuthGuard)
     @Post('/register')
     async registerUser(@Body() registerUserDto: RegisterUserDto): Promise<User> {
 
